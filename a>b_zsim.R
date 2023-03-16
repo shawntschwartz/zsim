@@ -41,7 +41,7 @@ for (i in ntrials){
     
     orig_df <- data.frame(cbind(mean_z_list, mean_list)) #creates df of difference (b-a) of means (z-scored and non-z-scored) for each repeat (nrepeats)
     orig_df <- apply(orig_df,2,as.character)
-    write.csv (orig_df, paste0(i,"_",j,"_orig.csv")) #creates csv of simulation outputs
+    write.csv (orig_df, paste0("a>b_",i,"_",j,"_orig.csv")) #creates csv of simulation outputs
     
     sim_mean_z <- mean(unlist(mean_z_list)) #average z-scored mean across all nrepeats
     sim_mean <- mean(unlist(mean_list))
@@ -50,6 +50,8 @@ for (i in ntrials){
   }
 }
 
+ab_sim_df$ntrials <- factor(ab_sim_df$ntrials)
+
 #plot using sim_df output
-ab_mean_z_plot <- ggplot(ab_sim_df, aes(asplit, sim_mean_z, col = ntrials)) + geom_point() + ggtitle("a>b mean_z")
-ab_mean_plot <- ggplot(ab_sim_df, aes(asplit, sim_mean, col = ntrials)) + geom_point() + ggtitle("a>b mean")
+ab_mean_z_plot <- ggplot(ab_sim_df, aes(asplit, sim_mean_z, col = ntrials)) + geom_line() + ggtitle("a>b mean_z")
+ab_mean_plot <- ggplot(ab_sim_df, aes(asplit, sim_mean, col = ntrials)) + geom_line() + ggtitle("a>b mean")
