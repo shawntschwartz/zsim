@@ -1,7 +1,7 @@
 library("ggplot2")
 
 #define
-ntrials <- c(10,20,50,100,500,1000)
+ntrials <- c(10, 20, 50, 100, 500, 1000, 2500, 5000, 10000)
 asplit <- c(0.1,0.2,0.3,0.4,0.5)
 nrepeats <- 5000
 mean <- 4
